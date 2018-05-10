@@ -15,8 +15,20 @@ ActiveRecord::Schema.define(version: 20180510191553) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "pokemons", force: :cascade do |t|
+    t.string "identifier"
+    t.integer "species_id"
+    t.integer "height"
+    t.integer "weight"
+    t.integer "base_experience"
+    t.integer "order"
+    t.boolean "is_default"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "abilities", force: :cascade do |t|
-    t.integer "identifier"
+    t.string "identifier"
     t.integer "generation_id"
     t.boolean "is_main_series"
     t.datetime "created_at", null: false
@@ -31,17 +43,4 @@ ActiveRecord::Schema.define(version: 20180510191553) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "pokemons", force: :cascade do |t|
-    t.string "identifier"
-    t.integer "species_id"
-    t.integer "height"
-    t.integer "weight"
-    t.integer "base_experience"
-    t.integer "order"
-    t.boolean "is_default"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 end
